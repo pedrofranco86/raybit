@@ -17,15 +17,15 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Build release APK
-        run: gradle --no-daemon assembleRelease
+      - name: Build installable debug APK
+        run: gradle --no-daemon assembleDebug
       - name: Prepare single APK
-        run: cp app/build/outputs/apk/release/app-release-unsigned.apk pelops-assistant.apk
+        run: cp app/build/outputs/apk/debug/app-debug.apk pelops-assistant.apk
       - name: Publish APK release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
           name: Pelops Assistant build ${{ github.run_number }}
-          body: "APK de prueba de Pelops Assistant. La conexión a IA en la nube aún no está incluida."
+          body: "APK de prueba instalable de Pelops Assistant. La conexión a IA en la nube aún no está incluida."
           files: pelops-assistant.apk
           make_latest: true
