@@ -46,7 +46,7 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
         root.addView(ScrollView(this).apply { addView(history) }, LinearLayout.LayoutParams(-1, 0, 1f))
         input = EditText(this).apply {
             hint = "Escribe tu mensaje..."; setTextColor(-1); setHintTextColor(0xFFB8C5CC.toInt())
-            singleLine = true; imeOptions = EditorInfo.IME_ACTION_SEND
+            setSingleLine(true); imeOptions = EditorInfo.IME_ACTION_SEND
             setOnEditorActionListener { _, action, _ -> if (action == EditorInfo.IME_ACTION_SEND) { sendMessage(); true } else false }
         }
         root.addView(input, LinearLayout.LayoutParams(-1, -2))
